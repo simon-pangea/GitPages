@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
 
 class SimpleNotification extends Component {
   constructor() {
@@ -21,7 +23,8 @@ class SimpleNotification extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.showNotification}>SHOW NOTIFICATION</button>
+        <Button onClick={this.showNotification}>SHOW NOTIFICATION</Button>
+        <Divider />
       </div>
     );
   }

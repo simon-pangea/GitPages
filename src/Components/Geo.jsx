@@ -1,5 +1,8 @@
 import React, { useRef, useState } from "react";
 
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+
 export default function Geo() {
   const [geoData, setGeodata] = useState("");
 
@@ -22,9 +25,10 @@ export default function Geo() {
 
   return (
     <div>
-      <button onClick={getLocation}>LOCATION</button>
+      <Button onClick={getLocation}>LOCATION</Button>
       {geoData.length > 0 && <p>{geoData}</p>}
       <br />
+      <Divider />
     </div>
   );
 }

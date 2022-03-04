@@ -1,14 +1,17 @@
 import React, { useRef, useState } from "react";
+import Button from "@mui/material/Button";
 
 export default function Camera() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [camera, setCamera] = useState(false);
+  const [display, setDisplay] = useState(false);
   const [btnLable, setBtnLable] = useState("START CAMERA");
   const width = 720;
   const height = 526;
 
   const photo = () => {
+    setDisplay(true);
     if (!camera) {
       streamCamVideo();
       setBtnLable("MAKE PHOTO");
@@ -42,7 +45,12 @@ export default function Camera() {
       navigator.mozGetUserMedia ||
       navigator.msGetUserMedia;
     navigator.getMedia(
-      { video: true },
+      //{ video: true },
+      {
+        video: {
+          facingMode: "environment",
+        },
+      },
       () => {
         canvasRef.current.width = width;
         canvasRef.current.height = height;
@@ -58,25 +66,29 @@ export default function Camera() {
 
   return (
     <div>
-      <button id="start-camera" onClick={photo}>
+      {display && (
+        <>
+          <canvas
+            id="canvas"
+            max-width={width}
+            max-height={height}
+            ref={canvasRef}
+            style={camera ? { display: "none" } : {}}
+          />
+          <video
+            id="video"
+            width="320"
+            height="240"
+            autoPlay
+            ref={videoRef}
+            style={!camera ? { display: "none" } : {}}
+          ></video>
+          <br />
+        </>
+      )}
+      <Button id="start-camera" onClick={photo}>
         {btnLable}
-      </button>
-      <br />
-      <canvas
-        id="canvas"
-        max-width={width}
-        max-height={height}
-        ref={canvasRef}
-        style={camera ? { display: "none" } : {}}
-      />
-      <video
-        id="video"
-        width="320"
-        height="240"
-        autoPlay
-        ref={videoRef}
-        style={!camera ? { display: "none" } : {}}
-      ></video>
+      </Button>
     </div>
   );
 }
