@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+
 
 export default function Camera() {
   const videoRef = useRef(null);
@@ -77,8 +79,8 @@ export default function Camera() {
           />
           <video
             id="video"
-            width="320"
-            height="240"
+            width="800"
+            height="480"
             autoPlay
             ref={videoRef}
             style={!camera ? { display: "none" } : {}}
@@ -89,6 +91,7 @@ export default function Camera() {
       <Button id="start-camera" onClick={photo}>
         {btnLable}
       </Button>
+      <Divider />
     </div>
   );
 }

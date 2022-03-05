@@ -6,11 +6,16 @@ import Geo from "./Geo";
 import Notification from "./Notification";
 import Camera from "./Camera";
 import red from "@material-ui/core/colors/red";
+import Music from "./Music";
+import YouTube from "./YouTube";
+
 
 const buttons = [
   <Geo key="one" />,
+  <Music key="fore" />,
   <Notification key="two" />,
   <Camera key="three" />,
+  <YouTube key ="youtube" />,
 ];
 
 export default function GroupOrientation() {
