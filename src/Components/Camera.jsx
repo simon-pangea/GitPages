@@ -1,6 +1,26 @@
 import React, { useRef, useState } from "react";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
+import { makeStyles } from '@mui/styles';
+
+  const useStyles = makeStyles({
+    container: {
+      position: "relative",
+      width: "100%",
+      overflow: "hidden",
+    },
+    responsiveiframe: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+      width: "100%",
+      height: "100%",
+      border: "none",
+    },
+    
+  });
 
 
 export default function Camera() {
@@ -11,6 +31,7 @@ export default function Camera() {
   const [btnLable, setBtnLable] = useState("START CAMERA");
   const width = 720;
   const height = 526;
+  const classes = useStyles();
 
   const photo = () => {
     setDisplay(true);
@@ -72,15 +93,14 @@ export default function Camera() {
         <>
           <canvas
             id="canvas"
-            max-width={width}
-            max-height={height}
+            className={classes.container}
             ref={canvasRef}
             style={camera ? { display: "none" } : {}}
           />
           <video
             id="video"
-            width="800"
-            height="480"
+            width="320"
+            height="240"
             autoPlay
             ref={videoRef}
             style={!camera ? { display: "none" } : {}}
