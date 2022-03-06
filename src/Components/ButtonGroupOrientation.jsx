@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Geo from "./Geo";
 import Notification from "./Notification";
 import Camera from "./Camera";
+import Camera2 from "./Camera2";
 import red from "@material-ui/core/colors/red";
 import Music from "./Music";
 import YouTube from "./YouTube";
@@ -14,7 +15,8 @@ const buttons = [
   <Geo key="one" />,
   <Music key="fore" />,
   <Notification key="two" />,
-  <Camera key="three" />,
+  //<Camera key="three" />,
+  <Camera2 key="three2" />,
   <YouTube key ="youtube" />,
 ];
 
